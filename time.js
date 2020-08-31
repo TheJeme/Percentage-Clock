@@ -6,7 +6,12 @@ function leapYear(year)
 }
 
 function UpdateDecade() {
-  let decadePercentage = (moment().dayOfYear() * (moment().format('YYYY') + 1) / (365 * 11))
+  const timeNow = moment()
+  const yearsToAdd = 10 - timeNow.format('YY') % 10
+  const nextDecade = moment().add(yearsToAdd, 'year').startOf('year')
+  let diffYear = moment(nextDecade).diff(timeNow);
+  let tillNextDecade = moment.duration(diffYear).as('days')
+  let decadePercentage = ((3650 - tillNextDecade) / 3650)
   $('#decadeValue').attr('data-value', (decadePercentage * 100))
   document.getElementById("decadeLabel").innerHTML = Math.round(decadePercentage * 100) + "%"
 }
