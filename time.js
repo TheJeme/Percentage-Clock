@@ -13,7 +13,7 @@ function UpdateDecade() {
   let tillNextDecade = moment.duration(diffYear).as('days')
   let decadePercentage = ((3650 - tillNextDecade) / 3650)
   $('#decadeValue').attr('data-value', (decadePercentage * 100))
-  document.getElementById("decadeLabel").innerHTML = Math.round(decadePercentage * 100) + "%"
+  document.getElementById("decadeLabel").innerHTML = Math.floor(decadePercentage * 100) + "%"
 }
 
 function UpdateYear() {
@@ -28,7 +28,7 @@ function UpdateYear() {
     yearPercentage = ((24 * 365 - tillNextYear) / (24 * 365))
   }
   $('#yearValue').attr('data-value', (yearPercentage * 100))
-  document.getElementById("yearLabel").innerHTML = Math.round(yearPercentage * 100) + "%"
+  document.getElementById("yearLabel").innerHTML = Math.floor(yearPercentage * 100) + "%"
 }
 
 function UpdateMonth() {
@@ -38,7 +38,7 @@ function UpdateMonth() {
   let tillNextMonth = moment.duration(diffMonth).as('minutes')
   let monthPercentage = ((60 * 24 * timeNow.daysInMonth() - tillNextMonth) / (60 * 24 * timeNow.daysInMonth()))
   $('#monthValue').attr('data-value', (monthPercentage * 100))
-  document.getElementById("monthLabel").innerHTML = Math.round(monthPercentage * 100) + "%"
+  document.getElementById("monthLabel").innerHTML = Math.floor(monthPercentage * 100) + "%"
 }
 
 function UpdateWeek() {
@@ -48,7 +48,7 @@ function UpdateWeek() {
   let tillNextWeek = moment.duration(diffWeek).as('minutes')
   let weekPercentage = ((10080 - tillNextWeek) / 10080)
   $('#weekValue').attr('data-value', (weekPercentage * 100))
-  document.getElementById("weekLabel").innerHTML = Math.round(weekPercentage * 100) + "%"
+  document.getElementById("weekLabel").innerHTML = Math.floor(weekPercentage * 100) + "%"
 }
 
 function UpdateDay() {
@@ -58,7 +58,7 @@ function UpdateDay() {
   let tillNextDay = moment.duration(diffDay).as('seconds')
   let dayPercentage = ((86400 - tillNextDay) / 86400)
   $('#dayValue').attr('data-value', (dayPercentage * 100))
-  document.getElementById("dayLabel").innerHTML = Math.round(dayPercentage * 100) + "%"
+  document.getElementById("dayLabel").innerHTML = Math.floor(dayPercentage * 100) + "%"
 }
 
 function UpdateHour() {
@@ -68,7 +68,7 @@ function UpdateHour() {
   let tillNextHour = moment.duration(diffHour).as('seconds')
   let hourPercentage = ((3600 - tillNextHour) / 3600)
   $('#hourValue').attr('data-value', (hourPercentage * 100))
-  document.getElementById("hourLabel").innerHTML = Math.round(hourPercentage * 100) + "%"
+  document.getElementById("hourLabel").innerHTML = Math.floor(hourPercentage * 100) + "%"
 }
 
 function UpdateMinute() {
@@ -78,13 +78,13 @@ function UpdateMinute() {
   let tillNextMinute = moment.duration(diffMinute).as('milliseconds')
   let minutePercentage = ((60000 - tillNextMinute) / 60000)
   $('#minuteValue').attr('data-value', (minutePercentage * 100))
-  document.getElementById("minuteLabel").innerHTML = Math.round(minutePercentage * 100) + "%"
+  document.getElementById("minuteLabel").innerHTML = Math.floor(minutePercentage * 100) + "%"
 }
 
 function UpdateSecond() {
   let secondPercentage = (moment().format('SSS') / 1000)
   $('#secondValue').attr('data-value', (secondPercentage * 100))
-  document.getElementById("secondLabel").innerHTML = Math.round(secondPercentage * 100) + "%"
+  document.getElementById("secondLabel").innerHTML = Math.floor(secondPercentage * 100) + "%"
 }
 
 function UpdateTime() {
