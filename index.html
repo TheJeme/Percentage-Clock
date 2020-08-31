@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Percentage Clock</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script type="text/javascript" src="./dummy.js.lataus"></script>
+
+    <link rel="stylesheet" type="text/css" href="./result-light.css">
+
+      <link rel="stylesheet" type="text/css" href="./bootstrap.min.css">
+      <script type="text/javascript" src="./jquery-3.3.1.slim.min.js.lataus"></script>
+      <script type="text/javascript" src="./bootstrap.bundle.min.js.lataus"></script>
+      <link rel="stylesheet" type="text/css" href="./font-awesome.min.css">
+
+  <style id="compiled-css" type="text/css">
+.progress {
+  width: 150px;
+  height: 150px;
+  background: none;
+  position: relative;
+}
+
+.progress::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.progress .progress-left {
+  left: 0;
+}
+
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 6px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.progress .progress-right {
+  right: 0;
+}
+
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+.progress .progress-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+
+body {
+  background: #ff7e5f;
+  background: -webkit-linear-gradient(to right, #ff7e5f, #feb47b);
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  min-height: 100vh;
+}
+
+.rounded-lg {
+  border-radius: 1rem;
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+div.h4 {
+  line-height: 1rem;
+}
+
+    /* EOS */
+  </style>
+
+  <script id="insert"></script>
+
+
+</head>
+<body>
+  
+    <div class="container py-5">
+      <h1 class="text-center mb-5" >Percentage Clock</h1>
+  <div class="row">
+
+
+    <div class="col-xl-3 col-lg-6 mb-4">
+      <div class="bg-white rounded-lg p-5 shadow">
+        <h2 id="decadeValue" class="h4 font-weight-bold text-center mb-4">Decade</h2>
+        <div class="progress mx-auto" data-value="0">
+          <span class="progress-left">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <span class="progress-right">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+            <div id="decadeLabel" class="h2 font-weight-bold">0<sup class="small">%</sup></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-xl-3 col-lg-6 mb-4">
+      <div class="bg-white rounded-lg p-5 shadow">
+        <h2 class="h4 font-weight-bold text-center mb-4">Year</h2>
+        <div id="yearValue" class="progress mx-auto" data-value="0">
+          <span class="progress-left">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <span class="progress-right">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+            <div id="yearLabel" class="h2 font-weight-bold">0<sup class="small">%</sup></div>
+          </div>
+        </div>        
+      </div>
+    </div>
+    
+    <div class="col-xl-3 col-lg-6 mb-4">
+      <div class="bg-white rounded-lg p-5 shadow">
+        <h2 class="h4 font-weight-bold text-center mb-4">Month</h2>
+        <div id="monthValue" class="progress mx-auto" data-value="0">
+          <span class="progress-left">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <span class="progress-right">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+            <div id="monthLabel" class="h2 font-weight-bold">0<sup class="small">%</sup></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-xl-3 col-lg-6 mb-4">
+      <div class="bg-white rounded-lg p-5 shadow">
+        <h2 class="h4 font-weight-bold text-center mb-4">Week</h2>
+        <div id="weekValue" class="progress mx-auto" data-value="0">
+          <span class="progress-left">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <span class="progress-right">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+            <div id="weekLabel" class="h2 font-weight-bold">0<sup class="small">%</sup></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-xl-3 col-lg-6 mb-4">
+      <div class="bg-white rounded-lg p-5 shadow">
+        <h2 class="h4 font-weight-bold text-center mb-4">Day</h2>
+        <div id="dayValue" class="progress mx-auto" data-value="0">
+          <span class="progress-left">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <span class="progress-right">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+            <div id="dayLabel" class="h2 font-weight-bold">0<sup class="small">%</sup></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-xl-3 col-lg-6 mb-4">
+      <div class="bg-white rounded-lg p-5 shadow">
+        <h2 class="h4 font-weight-bold text-center mb-4">Hour</h2>
+        <div id="hourValue" class="progress mx-auto" data-value="0">
+          <span class="progress-left">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <span class="progress-right">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+            <div id="hourLabel" class="h2 font-weight-bold">0<sup class="small">%</sup></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-xl-3 col-lg-6 mb-4">
+      <div class="bg-white rounded-lg p-5 shadow">
+        <h2 class="h4 font-weight-bold text-center mb-4">Minute</h2>
+        <div id="minuteValue" class="progress mx-auto" data-value="0">
+          <span class="progress-left">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <span class="progress-right">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+            <div id="minuteLabel" class="h2 font-weight-bold">0<sup class="small">%</sup></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-xl-3 col-lg-6 mb-4">
+      <div class="bg-white rounded-lg p-5 shadow">
+        <h2 class="h4 font-weight-bold text-center mb-4">Second</h2>
+        <div id="secondValue" class="progress mx-auto" data-value="0">
+          <span class="progress-left">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <span class="progress-right">
+            <span class="progress-bar border-danger"></span>
+          </span>
+          <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+            <div id="secondLabel" class="h2 font-weight-bold">0<sup class="small">%</sup></div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    </div>    
+  </div>
+</div>
+
+<script src="moment.js"></script>
+<script src="moment-round.js"></script>
+<script src="time.js"></script>
+</body></html>
